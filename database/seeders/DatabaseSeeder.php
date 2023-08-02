@@ -20,20 +20,21 @@ class DatabaseSeeder extends Seeder
        
 
 
-        User::create([
-            'password' => Hash::make('12345'),
-            'id_poktan' => '1001391',
-            'nama_poktan' => 'mekar jaya',
-            'NIK' => '000144766912',
-            'ketua' => 'hayatudin',
-            'alamat_sekretariat' => 'jalan sekayu',
-            'kelurahan' => 'serasan jaya',
-            'kecamatan' => 'sekayu',
-            'verifikasi' => 'sudah',
-            'bantuan' => 'sudah',
-            'sumber_dana' => 'APBD',
-            'jenis_bantuan' => 'PUPUK',
-        ]);
+        // User::create([
+        //     'password' => Hash::make('12345'),
+        //     'id_poktan' => '1001391',
+        //     'nama_poktan' => 'mekar jaya',
+        //     'NIK' => '000144766912',
+        //     'ketua' => 'hayatudin',
+        //     'alamat_sekretariat' => 'jalan sekayu',
+        //     'kelurahan' => 'serasan jaya',
+        //     'kecamatan' => 'sekayu',
+        //     'verifikasi' => 'sudah',
+        //     'bantuan' => 'sudah',
+        //     'sumber_dana' => 'APBD',
+        //     'jenis_bantuan' => 'PUPUK',
+        // ]);
+        
             
         category::create([
             'name' => 'Benih',
@@ -51,7 +52,6 @@ class DatabaseSeeder extends Seeder
             
          \App\Models\User::factory(2)->create();
          \App\Models\post::factory(13)->create();
-         \App\Models\Report::factory(6)->create();
 
         
         // post::create([

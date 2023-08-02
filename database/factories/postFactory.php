@@ -15,6 +15,7 @@ class postFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(mt_rand(2,5)),
+            'author' => $this->faker->name(),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
             // 'body' =>'<p>' . implode('</p><p>',$this->faker->paragraphs(mt_rand(5,10))). '</p>',   cara untuk paragraph

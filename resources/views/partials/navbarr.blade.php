@@ -1,7 +1,12 @@
 {{-- style="background-color:#e8f5e9" --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-success ">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E552E0">
     <div class="container">
-      <a class="navbar-brand" href="/">Siketan</a>
+      {{-- tambah logo, ganti judul jadi repository --}}
+
+      <a class="navbar-brand" href="/">
+        <img src="img/Politeknik Sekayu.png" width="40" height="40"  class="me-md-2">
+        <img src="img/header title.png"  height="40">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -16,23 +21,30 @@
           </li>  
         </ul> --}}
         
+        {{-- isolated home --}}
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('/') ? 'active' : ''}} " href="/">Home</a>
         </li>  
+
+        {{-- active artikel jadi home "/" --}}
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('posts') ? 'active' : ''}} " href="/posts">Artikel</a>
         </li>  
+
+        {{-- isolate kategori --}}
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('categories') ? 'active' : ''}} " href="/categories">Kategori</a>
         </li> 
+
       </ul>
         
       @auth
       <div class="flex-shrink-0 dropdown ms-auto navbar-dark">
         
         <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          Welcome back , {{ Auth()->user()->nama_poktan }}
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          <img src="img/arif.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-light">
+          {{ Auth()->user()->nama }}
+          
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>

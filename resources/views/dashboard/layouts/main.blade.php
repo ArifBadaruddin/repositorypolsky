@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="hayatudin">
-    <title>Siketan | Dashboard</title>
+    <link rel="icon" type="image/jpg" href="/img/Politeknik Sekayu.png">
+
+    <title>Sistem Repository Polsky | Dashboard</title>
     {{-- <title>Siketan | {{ $title }}</title> --}}
 
     

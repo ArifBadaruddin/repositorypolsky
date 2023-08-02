@@ -2,10 +2,10 @@
 
 @section('container')
 
-<img class="wave" src="img/rename.png">
+<img class="wave" src="img/gelombang.png">
 	<div class="container">
 		<div class="img">
-			<img src="img/80.svg">
+			<img src="img/people.svg">
 		</div>
 		<div class="login-content">
 
@@ -19,15 +19,15 @@
          
         @endif
 			<form action="/login" method="post">
-                <img src="/img/muba.png" style="margin-right:10px">
-				<img src="/img/siketantitle.png" style="margin-left:10px">
-				<h2 class="title">Silahkan Login</h2>
+         
+				<img src="/img/Politeknik Sekayu.png">
+				<h2 class="title">Login Sistem Repository</h2>
 
                 @csrf
                 <div class="form-floating mb-3">
-                  <input type="text" name="id_poktan" class="form-control @error('username') is-invalid @enderror" id="id_poktan" placeholder="id_poktan" autofocus required>
-                  <label for="id_poktan">Username</label>
-                  @error('username') 
+                  <input type="text" name="nomorinduk" class="form-control @error('nomorinduk') is-invalid @enderror" id="nomorinduk" placeholder="nomorinduk" autofocus required>
+                  <label for="nomorinduk">Username</label>
+                  @error('nomorinduk') 
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div> 

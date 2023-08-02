@@ -14,4 +14,30 @@ class category extends Model
     {
         return $this->hasMany(post::class);
     }
+
+    public function scopeFilter($query , array $filters)
+    {
+
+
+
+        $query->when($filters['keyword'] ?? false, function($query, $search) {
+            return $query->where('name', 'like', '%'. $search . '%');
+        });
+
+
+        // // ini dimatikan saja dulu
+        // $query->when($filters['author'] ?? false, fn($query, $author) =>
+        //     $query->whereHas('user', fn($query) =>
+        //          $query->where('ketua', $author)
+        //     )
+        //     );
+    }
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+
 }

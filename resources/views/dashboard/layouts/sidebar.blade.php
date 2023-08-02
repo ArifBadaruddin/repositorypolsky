@@ -1,19 +1,19 @@
 
 
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse" style="background-color: #14202C">
     <div class="position-sticky pt-3">
       @can('notadmin')
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/profil*') ? 'active' : '' }}"  href="/dashboard/profil">
-            <span data-feather="home"></span>
-            Profil Saya
+          <a class="nav-link {{ Request::is('dashboard/index') ? 'active' : '' }}"  href="/dashboard" style="color: #fff ">
+            <span data-feather="codesandbox"></span>
+            Dashboard
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/reportus*') ? 'active' : ''}}" href="/dashboard/reportus">
-            <span data-feather="file"></span>
-            Pengaduan
+          <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : ''}}" href="/dashboard/posts" style="color: #fff ">
+            <span data-feather="folder"></span>
+            Karya Ilmiah
           </a>
         </li>
 
@@ -26,27 +26,27 @@
       </h6>
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : ''}}" href="/dashboard/posts">
-            <span data-feather="file-text"></span>
-            Postingan
+          <a class="nav-link {{ Request::is('dashboard/index') ? 'active' : ''}}" href="/dashboard" style="color: #fff ">
+            <span data-feather="codesandbox"></span>
+            Dashboard
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/report*') ? 'active' : ''}}" href="/dashboard/report">
-            <span data-feather="file"></span>
-            Data Pengaduan
+          <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : ''}}" href="/dashboard/posts" style="color: #fff ">
+            <span data-feather="folder"></span>
+            Karya Ilmiah
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Data kelompok tani
+          <a class="nav-link {{ Request::is('dashboard/kategori*') ? 'active' : ''}}" href="/dashboard/kategori" style="color: #fff ">
+            <span data-feather="list"></span>
+            kategori
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Year-end sale
+          <a class="nav-link {{ Request::is('dashboard/users') ? 'active' : ''}}" href="/dashboard/users" style="color: #fff ">
+            <span data-feather="users"></span>
+            user
           </a>
         </li>
       </ul>

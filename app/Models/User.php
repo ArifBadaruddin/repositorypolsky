@@ -35,6 +35,27 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    public function scopeFilter($query , array $filters)
+    {
+
+
+
+        $query->when($filters['keyword'] ?? false, function($query, $search) {
+            return $query->where('nama', 'like', '%'. $search . '%')
+                         ->orWhere('nomorinduk','like', '%'. $search . '%');
+        });
+
+
+        // // ini dimatikan saja dulu
+        // $query->when($filters['author'] ?? false, fn($query, $author) =>
+        //     $query->whereHas('user', fn($query) =>
+        //          $query->where('ketua', $author)
+        //     )
+        //     );
+    }
+
+
     /**
      * The attributes that should be cast.
      *
@@ -47,11 +68,12 @@ class User extends Authenticatable
          return $this->hasMany(post::class);
      }
 
-     public function report()
+     public function users()
      {
-         return $this->hasMany(Report::class);
+         return $this->hasMany(post::class);
      }
- 
+
+
 
 
 }

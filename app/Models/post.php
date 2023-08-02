@@ -41,7 +41,7 @@ class post extends Model
 
         $query->when($filters['author'] ?? false, function($query, $author){
             return $query->whereHas('user', function($query) use ($author) {
-              $query->where('ketua', $author);
+              $query->where('nama', $author);
             });
     });
 

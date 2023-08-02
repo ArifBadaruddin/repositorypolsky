@@ -21,8 +21,10 @@ class DashboardpostController extends Controller
     {
         return view('dashboard.posts.index',[
             // untuk memanggil semua post
-            // 'post' =>post::all() 
-            'posts' =>post::where('user_id', auth()->user()->id)->get()
+            'posts' =>post::all() 
+
+            // show karya ilmiha only user
+            // 'posts' =>post::where('user_id', auth()->user()->id)->get() 
         ]);
     }
 
@@ -49,9 +51,11 @@ class DashboardpostController extends Controller
 
         $request->validate([
             'title'         => 'required|max:255',
+            'author'        => 'required',
             'slug'          => 'required',
             'category_id'   => 'required',
             'image'         => 'image|file|max:2048',
+            'dokumen'       => 'pdf|file|max:30000',
             'body'          => 'required',
         ]);
 
@@ -62,6 +66,7 @@ class DashboardpostController extends Controller
 
 
         $title          = $request->title;
+        $author          = $request->author;
         $slug           = $request->slug;
         $category_id    = $request->category_id;
         $image           = $image;
@@ -71,6 +76,7 @@ class DashboardpostController extends Controller
         $data = new post();
         $data->user_id      = Auth::id();
         $data->title        = $title;
+        $data->author        = $author;
         $data->slug         = $slug;
         $data->category_id  = $category_id;
         $data->image        = $image;
@@ -121,6 +127,7 @@ class DashboardpostController extends Controller
 
         $request->validate([
             'title'         => 'required|max:255',
+            'author'        => 'required',
             'slug'          => 'required',
             'category_id'   => 'required',
             'image'         => 'image|file|max:2048',
@@ -135,14 +142,16 @@ class DashboardpostController extends Controller
 
 
         $title          = $request->title;
+        $author         = $request->author;
         $slug           = $request->slug;
         $category_id    = $request->category_id;
-        $image           = $image;
+        $image          = $image;
         $body           = $request->body;
 
         $data = post::find($post->id);
         $data->user_id      = Auth::id();
         $data->title        = $title;
+        $data->author       = $author;
         $data->slug         = $slug;
         $data->category_id  = $category_id;
         $data->image        = $image;

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoriespostController;
 use App\Http\Controllers\DashboardpostController;
+use App\Http\Controllers\dashboardprofile;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DatapoktanController;
 use App\Http\Controllers\GantipasswordController;
@@ -13,6 +16,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportUserController;
+use App\Http\Controllers\UsersController;
 use App\Models\post;
 use App\Models\category;
 use App\Models\User;
@@ -65,33 +69,50 @@ Route::get('/categories', function() {
     //     ]);
     // });  
 
-  
+// login
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
-
+// dashboard
 Route::get('/dashboard', function(){
   return view('dashboard.index');
 })->middleware('auth');
 
-
+// profil
 Route::get('/dashboard/profil', [ProfilController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/dashboardadmin', [dashboardprofile::class, 'index'])->middleware('admin');
 
+// ganti password
 Route::get('/dashboard/password', [GantipasswordController::class, 'edit'])->middleware('auth');
 Route::post('/dashboard/password', [GantipasswordController::class, 'updatepassword'])->middleware('auth');
 
 // route untuk slug
 Route::get('/dashboard/posts/checkSlug', [DashboardpostController::class, 'checkSlug']);
 
+// post
 Route::resource('/dashboard/posts', DashboardpostController::class)->middleware('auth');
+
 Route::post('/dashboard/posts/store', [DashboardpostController::class, 'store'])->middleware('auth');
+
+
+// kategori
+Route::resource('/dashboard/kategori', CategoriespostController::class)->middleware('auth');
+Route::post('/dashboard/kategori/store', [CategoriespostController::class, 'store'])->middleware('admin');
+
+// Route::get('/dashboard/kategori', [CategoriesController::class, 'index'])->middleware('admin');
+
+// users
+Route::get('/dashboard/users', [UsersController::class, 'index'])->middleware('admin');
+Route::post('/dashboard/users/store', [UsersController::class, 'store'])->middleware('admin');
 
 // Route::resource('/dashboard/lapor', LaporController::class)->except('show')->middleware('admin');
 // Route::resource('/dashboard/posts/', DashboardPostController::class)->except([
 //   'show', 'destroy', 'edit', 'update'
 // ])->middleware('auth');
 
-Route::resource('/dashboard/reportus', ReportUserController::class)->middleware('auth');
-Route::resource('/dashboard/report', ReportController::class)->middleware('admin');
+
+// TIDAK TERPAKAI
+// Route::resource('/dashboard/reportus', ReportUserController::class)->middleware('auth');
+// Route::resource('/dashboard/report', ReportController::class)->middleware('admin');
 

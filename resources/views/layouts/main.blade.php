@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     {{-- css login --}}
     
-    <link rel="icon" type="image/jpg" href="/img/ketanhijau.ico">
+    <link rel="icon" type="image/jpg" href="/img/Politeknik Sekayu.png">
 
-    <title>Siketan | {{ $title }}</title>
+    <title>{{ $title }} | POLSKY Repository</title>
 
 
 
@@ -34,6 +34,9 @@
         @yield('container')
         <!-- nama bebas tapi harus sama dengan section untuk isi contoh container! -->
     </div>
+
+    {{--footer --}}
+    @include('partials.footer')
 
 
 
