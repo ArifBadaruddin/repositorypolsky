@@ -28,13 +28,13 @@
 
         {{-- active artikel jadi home "/" --}}
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('posts') ? 'active' : ''}} " href="/posts">Artikel</a>
+          <a class="nav-link  {{ Request::is('posts') ? 'active' : ''}} " href="/posts">Repository Search</a>
         </li>  
 
         {{-- isolate kategori --}}
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link  {{ Request::is('categories') ? 'active' : ''}} " href="/categories">Kategori</a>
-        </li> 
+        </li>  --}}
 
       </ul>
         
@@ -42,7 +42,7 @@
       <div class="flex-shrink-0 dropdown ms-auto navbar-dark">
         
         <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="img/arif.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-light">
+          <img src="img/blank.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-light">
           {{ Auth()->user()->nama }}
           
         </a>

@@ -16,9 +16,9 @@
     {{-- css login --}}
     
     <link rel="stylesheet" href="/css/style.css ">
-    <link rel="icon" type="image/jpg" href="/img/ketanhijau.ico">
+    <link rel="icon" type="image/jpg" href="/img/Politeknik Sekayu.png">
 
-    <title>Siketan | {{ $title }}</title>
+    <title> {{ $title }} | Polsky Repository</title>
   </head>
   <body>
 

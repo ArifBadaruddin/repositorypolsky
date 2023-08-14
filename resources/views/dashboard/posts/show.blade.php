@@ -30,6 +30,7 @@
          @endif
 
          <div class="row">
+            <a href="{{ asset('storage' .$post->dokumen) }}">pdf</a>
             {{-- <p>Oleh <a href="/authors/{{ $post->user->nama }}" class="text-decoration-none">{{ $post->user->ketua }} </a> 
                in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p> --}}
             <h5>Author</h5>

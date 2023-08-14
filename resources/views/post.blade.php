@@ -66,8 +66,9 @@
                   {{-- <p>Oleh <a href="/authors/{{ $post->user->nama }}" class="text-decoration-none">{{ $post->user->ketua }} </a> 
                      in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p> --}}
                   <h5>Author</h5>
-                  <a href="/authors/{{ $post->user->author }}" class="text-decoration-none">{{ $post->user->author }} </a> 
+                  <a href="/authors/{{ $post->user->author }}" class="text-decoration-none">{{ $post->author }} </a> 
                   <h5>Date</h5>
+                  {{ $post->created_at }}
                   <h5>Category</h5>
                   <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a>
 
@@ -88,6 +89,8 @@
 
                {{-- /url --}}
 
+               {{-- <a href="{{ $post->dokumen }}" class="text-decoration-none"><button class="btn btn-success" type="button">Downlaod</button></a> --}}
+               <a href="{{ asset('dokumen/' . $post->dokumen) }}" class="text-decoration-none"><button class="btn btn-success" type="button">Downlaod</button></a>
                {{-- back --}}
                <a href="/posts" class="text-decoration-none">Kembali ke Home</a>
                {{-- /back --}}

@@ -17,6 +17,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportUserController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UsersssssController;
 use App\Models\post;
 use App\Models\category;
 use App\Models\User;
@@ -89,6 +90,7 @@ Route::post('/dashboard/password', [GantipasswordController::class, 'updatepassw
 
 // route untuk slug
 Route::get('/dashboard/posts/checkSlug', [DashboardpostController::class, 'checkSlug']);
+Route::get('/dashboard/kategori/checkSlug', [CategoriesController::class, 'checkSlug']);
 
 // post
 Route::resource('/dashboard/posts', DashboardpostController::class)->middleware('auth');
@@ -103,8 +105,17 @@ Route::post('/dashboard/kategori/store', [CategoriespostController::class, 'stor
 // Route::get('/dashboard/kategori', [CategoriesController::class, 'index'])->middleware('admin');
 
 // users
-Route::get('/dashboard/users', [UsersController::class, 'index'])->middleware('admin');
-Route::post('/dashboard/users/store', [UsersController::class, 'store'])->middleware('admin');
+// Route::get('/dashboard/users', [UsersController::class, 'index'])->middleware('admin');
+// Route::post('/dashboard/users/store', [UsersController::class, 'store'])->middleware('admin');
+// Route::get('/dashboard/users/{id}', [UsersController::class, 'show'])->middleware('admin');
+
+
+Route::resource('/dashboard/users', UsersssssController::class)->middleware('admin');
+Route::post('/dashboard/users/store', [UsersssssController::class, 'store'])->middleware('admin');
+Route::get('/dashboard/users/{id}', [UsersssssController::class, 'show'])->middleware('admin');
+Route::post('/dashboard/users/{id}', [UsersssssController::class, 'update'])->middleware('admin');
+
+
 
 // Route::resource('/dashboard/lapor', LaporController::class)->except('show')->middleware('admin');
 // Route::resource('/dashboard/posts/', DashboardPostController::class)->except([

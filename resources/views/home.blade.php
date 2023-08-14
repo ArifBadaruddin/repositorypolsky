@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
 @section('container')
-        <h1>Halaman Home </h1>
+{{-- <body style="background: url('/img/itemone.png'); background-sixe:cover; background-position:center">
         
+</body> --}}
+<img src="img/itemone.png" alt=""> 
 
 
 

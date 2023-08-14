@@ -35,7 +35,7 @@
 </div> --}}
 
 <div class="table-responsive col-lg-12">
-  <a href="/dashboard/users/create" class="btn btn-primary mb-3"><span data-feather="plus"></span>Tambah User</a>
+  <a href="/dashboard/users/create" class="btn btn-primary mb-3"><span data-feather="plus"></span>tambah user</a>
 
     <table class="table table-striped table-sm">
       <thead>

@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light p-md-2">
     <div class="container">
-        <a class="navbar-brand" href="/">Siketan</a>
+        <a class="navbar-brand" href="/">Polsky Repository</a>
       <button
         class="navbar-toggler"
         type="button"

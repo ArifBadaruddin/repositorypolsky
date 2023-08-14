@@ -44,7 +44,7 @@
           <th scope="col">author</th>
           <th scope="col">Judul</th>
           <th scope="col">Kategori</th>
-          
+          <th scope="col">Download</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -56,6 +56,7 @@
             <td>{{ $post->author }}</td>
             <td>{{ $post->title }}</td>
             <td>{{ $post->category->name }}</td>
+            <td><a href="{{ asset('dokumen/' . $post->dokumen) }}"> <button class="btn btn-success" type="button"> Downlaod</button></a></td>
             
             <td>
                 <a href="/dashboard/posts/{{ $post->slug }}"
@@ -77,5 +78,8 @@
        
       </tbody>
     </table>
+  </div>
+  <div class="d-flex justify-content-center">
+    {{ $posts->withQueryString()->links() }}
   </div>
 @endsection

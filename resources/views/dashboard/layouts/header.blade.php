@@ -11,7 +11,7 @@
   <div class="dropdown text-end px-3 justify-content-right">
     <a href="#" class="d-block link-light text-decoration-none dropdown-toggle " id="dropdownUser1"
       data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="img/arif.jpg" width="32" height="32" class="rounded-circle border border-light">
+      <img src="img/blank.jpg" width="32" height="32" class="rounded-circle border border-light">
       {{ Auth()->user()->nama }}
     </a>
     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\post;
 use App\Models\category;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -17,15 +18,29 @@ class DashboardpostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // $categories = category::count();
+        // $posts = post::count();
+        // $users = User::count();
+
+        $keyword = $request->keyword;
         return view('dashboard.posts.index',[
             // untuk memanggil semua post
-            'posts' =>post::all() 
+            'posts' =>post::with('category')
+                    ->where('title', 'LIKE', '%'.$keyword.'%')
+                    ->orwhere('author', 'LIKE', '%'.$keyword.'%')
+                    ->orWhere('body', 'LIKE', '%'.$keyword.'%')
+                    ->orWhereHas('category', function($query) use($keyword) {
+                $query->where('name', 'LIKE', '%'.$keyword.'%');
+            })
+            ->paginate(20)
+
 
             // show karya ilmiha only user
             // 'posts' =>post::where('user_id', auth()->user()->id)->get() 
         ]);
+        // ], compact('categories','posts', 'users'));
     }
 
     /**
@@ -55,7 +70,7 @@ class DashboardpostController extends Controller
             'slug'          => 'required',
             'category_id'   => 'required',
             'image'         => 'image|file|max:2048',
-            'dokumen'       => 'pdf|file|max:30000',
+            'dokumen'       => 'mimes:pdf',
             'body'          => 'required',
         ]);
 
@@ -63,23 +78,30 @@ class DashboardpostController extends Controller
         $file_name = $request->image->getClientOriginalName();
         $image = $request->image->storeAs('post-images', $file_name);
 
+        $file_name = $request->dokumen->getClientOriginalName();
+        $dokumen = $request->dokumen->storeAs('dokumen-pdf', $file_name);
+
 
 
         $title          = $request->title;
         $author          = $request->author;
         $slug           = $request->slug;
         $category_id    = $request->category_id;
-        $image           = $image;
+        $image          = $image;
+        $dokumen        = $dokumen;
         $body           = $request->body;
 
 
         $data = new post();
         $data->user_id      = Auth::id();
+        $data->nomorinduk    = Auth::user()->nomorinduk;
+        $data->prodi     = Auth::user()->prodi;
         $data->title        = $title;
         $data->author        = $author;
         $data->slug         = $slug;
         $data->category_id  = $category_id;
         $data->image        = $image;
+        $data->dokumen        = $dokumen;
         $data->excerpt      = Str::limit(strip_tags($request->body), 200);
         // $data->excerpt      = '-';
         $data->body         = $body;
@@ -131,6 +153,7 @@ class DashboardpostController extends Controller
             'slug'          => 'required',
             'category_id'   => 'required',
             'image'         => 'image|file|max:2048',
+            'dokumen'       => 'mimes:docx,doc,pdf',
             'body'          => 'required',
         ]);
         
@@ -140,12 +163,19 @@ class DashboardpostController extends Controller
         $file_name = $request->image->getClientOriginalName();
         $image = $request->image->storeAs('post-images', $file_name);
 
+        // dokumen 
+        $dokumen = $request->file('dokumen');
+        $nama_dokumen = 'FT'.date('Ymdhis').'.'.$request->file('dokumen')->getClientOriginalExtension();
+        $dokumen->move('dokumen/',$nama_dokumen);
+
+
 
         $title          = $request->title;
         $author         = $request->author;
         $slug           = $request->slug;
         $category_id    = $request->category_id;
         $image          = $image;
+        $dokumen        = $dokumen;
         $body           = $request->body;
 
         $data = post::find($post->id);
@@ -155,6 +185,7 @@ class DashboardpostController extends Controller
         $data->slug         = $slug;
         $data->category_id  = $category_id;
         $data->image        = $image;
+        $data->dokumen      = $nama_dokumen;
         $data->excerpt      = Str::limit(strip_tags($request->body), 200);
         // $data->excerpt      = '-';
         $data->body         = $body;

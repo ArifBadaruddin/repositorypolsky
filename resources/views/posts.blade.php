@@ -32,7 +32,7 @@
 
         {{-- carousel item 3 --}}
         <div class="carousel-item" style="height: 450px" >
-          <img src="img/banner-img.jpg" class="d-block w-100" alt="...">
+          <img src="img/itemone.png" class="d-block w-100" alt="...">
         </div>
       </div>
 
@@ -95,15 +95,15 @@
       <div class="row">
         <hr>
         {{-- post --}}
-        @foreach ($posts->skip(3) as $post)
+        @foreach ($posts->skip(0) as $post)
         <div class="card mb-3" style="max-width: 830px;">
           <div class="row g-0">
             @if ($post->image)
-            <div class="col-md-6">
-              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid">
-            </div>
+            
+              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid rounded-start" style="width: 150px; height:150px">
+            
             @else
-            <img src="img/arif.jpg" class="img-fluid rounded-start"  alt="{{ $post->category->name }}" style="width: 150px; height:150px">
+            <img src="img/Post.png" class="img-fluid rounded-start"  alt="{{ $post->category->name }}" style="width: 150px; height:150px">
             @endif
             <div class="col-md-8">
               <div class="card-body">
@@ -128,11 +128,13 @@
     {{-- list group --}}
     <div class="col-3">
       <ul class="list-group ">
-        <li class="list-group-item " style="background-color: #E552E0; color:#ffffff" aria-current="true">An active item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li class="list-group-item " style="background-color: #E552E0; color:#ffffff" aria-current="true">All of Politeknik Sekayu</li>
+        <li class="list-group-item">Teknik Informatika</li>
+        <li class="list-group-item">Akuntansi</li>
+        <li class="list-group-item">Teknik Pendingin TU</li>
+        <li class="list-group-item">e-Journal</li>
+        <li class="list-group-item">Tugas Akhir</li>
+        <li class="list-group-item">Pedoman Karya Ilmiah</li>
       </ul>
 
     </div>

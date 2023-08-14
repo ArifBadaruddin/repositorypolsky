@@ -40,4 +40,13 @@ class category extends Model
      * @var array<string, string>
      */
 
+     public function sluggable(): array
+{
+    return [
+        'slug' => [
+            'source' => 'name'
+        ]
+    ];
+}
+
 }

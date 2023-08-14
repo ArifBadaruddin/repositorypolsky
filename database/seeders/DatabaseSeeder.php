@@ -37,17 +37,17 @@ class DatabaseSeeder extends Seeder
         
             
         category::create([
-            'name' => 'Benih',
-            'slug' => 'benih',
+            'name' => 'Tugas Akhir',
+            'slug' => 'tugas_akhir',
         ]);
             
         category::create([
-            'name' => 'Racun Hama',
-            'slug' => 'racun_hama',
+            'name' => 'E-jurnal',
+            'slug' => 'e-jurnal',
             ]);
             category::create([
-                'name' => 'Pupuk',
-                'slug' => 'pupuk',
+                'name' => 'Tugas Praktik',
+                'slug' => 'tugas_praktik',
                 ]);
             
          \App\Models\User::factory(2)->create();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\post;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoriespostController extends Controller
 {
@@ -45,21 +46,24 @@ class CategoriespostController extends Controller
      */
     public function store(Request $request)
     {
+       
         $request->validate([
             'name'         => 'required|max:255',
-            'slug'         => 'required',
-            
+            'slug'          => 'required',
         ]);
 
-        $name         = $request->name;
-        $slug        = $request->slug;
-        
 
+
+
+        $name          = $request->name;
+        $slug           = $request->slug;
+    
 
 
         $data = new category();
         $data->name        = $name;
-        $data->slug        = $slug;
+        $data->slug         = $slug;
+      
         $data->save();
 
         return redirect('/dashboard/kategori')->with('success', 'Post telah berhasil ditambahkan');
@@ -108,5 +112,12 @@ class CategoriespostController extends Controller
     public function destroy(category $category)
     {
         //
+    }
+
+     
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(category::class, 'slug', $request->name);
+        return response()->json(['slug' =>$slug]);
     }
 }
